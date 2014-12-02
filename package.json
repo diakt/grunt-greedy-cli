@@ -1,0 +1,28 @@
+{
+  "name": "grunt-cli",
+  "description": "The grunt command line interface with automatic package install.",
+  "version": "0.0.1",
+  "author": {
+    "name": "Dmitry Ryzhov"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/diakt/grunt-greedy-cli.git"
+  },
+  "licenses": [
+    {
+      "type": "MIT"
+    }
+  ],
+  "bin": {
+    "grunt": "bin/grunt"
+  },
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "preferGlobal": true,
+  "dependencies": {
+    "grunt-cli": "0.1.13",
+    "check-dependencies": "0.7.1"
+  }
+}
