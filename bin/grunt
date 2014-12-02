@@ -1,45 +1,41 @@
 #!/usr/bin/env node
 
-'use strict';
+/*
+ * Обертка для `grunt-cli`
+ * Перед выполнением `grunt` проверяет установлены необходимые для него зависимости
+ *
+ * @require `sudo npm i -g check-dependencies`
+ *
+ * @author dryzhov@yandex-team.ru
+ */
 
-process.title = 'grunt';
+var spawn = require('child_process').spawn;
+var arg = process.argv.slice(2);
 
-// Especially badass external libs.
-var findup = require('findup-sync');
-var resolve = require('resolve').sync;
+//	запускает проверку зависимостей
+//	(grunt-tasks, node_modules)
+require('check-dependencies')({
+    install: true,
+    verbose: true
+}, function() {
+	
+	//	добавляет путь к локальному grunt-cli
+	arg.unshift('./node_modules/.bin/grunt');
 
-// Internal libs.
-var options = require('../lib/cli').options;
-var completion = require('../lib/completion');
-var info = require('../lib/info');
-var path = require('path');
+	//	выполняет `grunt` через child_process.spawn
+    var grunt = spawn('node', arg);
 
+    grunt.stdout.on('data', function (data) {
+    	//	логи Gruntjs
+        console.log('' + data);
+    });
 
-var basedir = process.cwd();
-var gruntpath;
+    grunt.stderr.on('data', function (data) {
+    	//	ошибки Gruntjs
+        console.log('`grunt` stderr: ' + data);
+    });
 
-// Do stuff based on CLI options.
-if ('completion' in options) {
-  completion.print(options.completion);
-} else if (options.version) {
-  info.version();
-} else if (options.base && !options.gruntfile) {
-  basedir = path.resolve(options.base);
-} else if (options.gruntfile) {
-  basedir = path.resolve(path.dirname(options.gruntfile));
-}
-
-try {
-  gruntpath = resolve('grunt', {basedir: basedir});
-} catch (ex) {
-  gruntpath = findup('lib/grunt.js');
-  // No grunt install found!
-  if (!gruntpath) {
-    if (options.version) { process.exit(); }
-    if (options.help) { info.help(); }
-    info.fatal('Unable to find local grunt.', 99);
-  }
-}
-
-// Everything looks good. Require local grunt and run it.
-require(gruntpath).cli();
+    grunt.on('close', function (code) {
+        console.log('`grunt` exited with code ' + code + '\n');
+    });
+});

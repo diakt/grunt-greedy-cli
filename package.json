@@ -1,7 +1,7 @@
 {
-  "name": "grunt-cli",
+  "name": "grunt-greedy-cli",
   "description": "The grunt command line interface with automatic package install.",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "author": {
     "name": "Dmitry Ryzhov"
   },
@@ -24,5 +24,25 @@
   "dependencies": {
     "grunt-cli": "0.1.13",
     "check-dependencies": "0.7.1"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/diakt/grunt-greedy-cli/issues"
+  },
+  "homepage": "https://github.com/diakt/grunt-greedy-cli",
+  "main": "bin/grunt",
+  "keywords": [
+    "grunt",
+    "command",
+    "line",
+    "package",
+    "install"
+  ],
+  "license": "MIT",
+  "readme": "ERROR: No README data found!",
+  "readmeFilename": "README.md",
+  "gitHead": "84c6f5620635135348d5e88e417db5ac4d37fd9d",
+  "_id": "grunt-greedy-cli@0.0.2",
+  "scripts": {},
+  "_shasum": "7058b7d9aa91043a69ef4537ffc06c6f79f18beb",
+  "_from": "grunt-greedy-cli@*"
 }
