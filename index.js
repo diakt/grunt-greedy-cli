@@ -19,8 +19,10 @@ require('check-dependencies')({
     verbose: true
 }, function() {
 	
-	//	добавляет путь к локальному grunt-cli
-	arg.unshift('./node_modules/.bin/grunt');
+	var path = require('path').dirname(process.mainModule.filename);
+
+	//	добавляет путь к grunt-cli
+	arg.unshift(path + '/node_modules/.bin/grunt');
 
 	//	выполняет `grunt` через child_process.spawn
     var grunt = spawn('node', arg);
