@@ -4,9 +4,7 @@
  * Обертка для `grunt-cli`
  * Перед выполнением `grunt` проверяет установлены необходимые для него зависимости
  *
- * @require `sudo npm i -g check-dependencies`
- *
- * @author dryzhov@yandex-team.ru
+ * @author indie@yandex.ru
  */
 
 var spawn = require('child_process').spawn;
@@ -16,7 +14,10 @@ var arg = process.argv.slice(2);
 //	(grunt-tasks, node_modules)
 require('check-dependencies')({
     install: true,
-    verbose: true
+    verbose: true,
+    log: function() {
+    	// заглушка для лога, чтобы не выводить лишний раз, если все идет по плану
+    }
 }, function() {
 	
 	var path = require('path').dirname(process.mainModule.filename);

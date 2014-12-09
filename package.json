@@ -1,9 +1,10 @@
 {
   "name": "grunt-greedy-cli",
   "description": "The grunt command line interface with automatic package install.",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "author": {
-    "name": "Dmitry Ryzhov"
+    "name": "Dmitry Ryzhov",
+    "email": "indie@yandex.ru"
   },
   "repository": {
     "type": "git",
