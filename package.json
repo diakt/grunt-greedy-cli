@@ -1,7 +1,7 @@
 {
   "name": "grunt-greedy-cli",
   "description": "The grunt command line interface with automatic package install.",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "author": {
     "name": "Dmitry Ryzhov",
     "email": "indie@yandex.ru"
@@ -19,12 +19,12 @@
     "grunt": "index.js"
   },
   "engines": {
-    "node": ">= 0.8.0"
+    "node": ">=0.10.21"
   },
   "preferGlobal": true,
   "dependencies": {
     "grunt-cli": "0.1.13",
-    "check-dependencies": "0.7.1"
+    "check-dependencies": "0.9.0-beta.0"
   },
   "bugs": {
     "url": "https://github.com/diakt/grunt-greedy-cli/issues"
